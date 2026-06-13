@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: work-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false        # введёшь вручную в Dashboard
+      - key: DEFAULT_TZ
+        value: Europe/Moscow
+      - key: WEEKLY_REPORT_DAY
+        value: sun
+      - key: WEEKLY_REPORT_HOUR
+        value: "20"
+    disk:
+      name: botdata
+      mountPath: /data
+      sizeGB: 1
